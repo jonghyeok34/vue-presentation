@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/1_mvvm_vanilla.js"></script>
+
+</head>
+<body>
+    <div id="container" >
+        <input type='hidden' id="currentCount" value="1">
+        <div>
+            <span>changing count is </span><input type="text" id="changingCount" value="1">
+        </div>
+        <div >
+            The count now is <span id="result"></span> 
+        </div>
+        <div id="current_count_container">
+            <button id="up_button" onclick="increaseAndShowValue()">
+                increase current count
+            </button>
+            <button id="up_button" onclick="decreaseAndShowValue()">
+                decrease current count
+            </button>
+        </div>
+    </div>
+    <script>
+        window.onload = function(){
+
+            var currentCount = document.getElementById('currentCount').value;
+            document.getElementById('result').innerHTML= currentCount;
+        }
+    </script>
+    
+</body>
+</html>

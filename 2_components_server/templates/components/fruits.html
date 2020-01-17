@@ -1,0 +1,12 @@
+<div>
+    
+    <div>과일</div>
+    <table>
+    {% for key, value in Fruit.items() %}
+        <tr>
+            <th>{{ key }}</th>
+            <th>{{ value }}</th>
+        </tr>
+    {% endfor %}
+    </table>
+</div>

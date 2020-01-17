@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div id="container">
+        <fruits :fruits="fruits"></fruits>
+        <veggies :veggies="veggies"></veggies>
+    </div>
+    <script type="module" >
+        import Fruits from "./components/fruits.js"
+        import Veggies from "./components/veggies.js"
+    
+        var mainAxios = axios.create({
+            // mode: "cors",
+            // headers: { "Access-Control-Allow-Headers":true, "Access-Control-Allow-Origin": '*', 'Content-Type': 'application/json'},
+            timeout: 10000
+        });
+        var vapp = new Vue({
+            el: "#container",
+            components:{
+                Fruits,
+                Veggies
+            },
+            data(){
+                return{
+                    fruits: null,
+                    veggies: null
+                }
+            },
+            created(){
+                this.get_fruits_veggies();
+            },
+            methods:{
+                get_fruits_veggies(){
+                    mainAxios.get('http://localhost:5000/fruits_veggies')
+                        .then(res=>{
+                            this.fruits = res.data.Fruit;
+                            this.veggies = res.data.Veggies;
+                        }).catch(err =>{
+                            alert(err);
+                        })
+                }
+            }
+        })
+    </script>
+</body>
+</html>

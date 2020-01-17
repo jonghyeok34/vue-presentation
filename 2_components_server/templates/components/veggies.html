@@ -1,0 +1,11 @@
+ <div>
+    <div>야채</div>
+    <table>
+    {% for key, value in Veggies.items() %}
+        <tr>
+            <th>{{ key }}</th>
+            <th>{{ value }}</th>
+        </tr>
+    {% endfor %}
+    </table>
+</div>
